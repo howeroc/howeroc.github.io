@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Redis 笔记 | Howeroc的角落</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Redis 的安装说明：此次操作都在Centos 6.5 32位机上操作去Redis 官网下载最新stable版本的tar.gz包安装
+12345678910111213$ wget http://download.redis.io/releases/redis-3.0.7.tar.gz # 可将地址改成最新的下载地址$ tar -xvf redis-3.0.7.tar.gz$ cd redis-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 笔记">
+<meta property="og:url" content="http://yoursite.com/2016/03/02/Redis-笔记/index.html">
+<meta property="og:site_name" content="Howeroc的角落">
+<meta property="og:description" content="Redis 的安装说明：此次操作都在Centos 6.5 32位机上操作去Redis 官网下载最新stable版本的tar.gz包安装
+12345678910111213$ wget http://download.redis.io/releases/redis-3.0.7.tar.gz # 可将地址改成最新的下载地址$ tar -xvf redis-3.0.7.tar.gz$ cd redis-">
+<meta property="og:updated_time" content="2016-03-02T12:18:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis 笔记">
+<meta name="twitter:description" content="Redis 的安装说明：此次操作都在Centos 6.5 32位机上操作去Redis 官网下载最新stable版本的tar.gz包安装
+12345678910111213$ wget http://download.redis.io/releases/redis-3.0.7.tar.gz # 可将地址改成最新的下载地址$ tar -xvf redis-3.0.7.tar.gz$ cd redis-">
+  
+    <link rel="alternative" href="/atom.xml" title="Howeroc的角落" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww4.sinaimg.cn/mw690/64c6894bgw1f14zn29fl5j20b90b7wf3.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Howe Chang</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">享受生活，全身心投入</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/howeroc" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/cutepeer?is_all=1" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/howeroc" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Command/" style="font-size: 10px;">Command</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/OSX/" style="font-size: 10px;">OSX</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/intellij/" style="font-size: 10px;">intellij</a> <a href="/tags/vim/" style="font-size: 20px;">vim</a> <a href="/tags/单词/" style="font-size: 10px;">单词</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/后台运行/" style="font-size: 10px;">后台运行</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/查看后台进程/" style="font-size: 10px;">查看后台进程</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Howe Chang</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww4.sinaimg.cn/mw690/64c6894bgw1f14zn29fl5j20b90b7wf3.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Howe Chang</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">享受生活，全身心投入</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/howeroc" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/cutepeer?is_all=1" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/howeroc" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Redis-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/02/Redis-笔记/" class="article-date">
+  	<time datetime="2016-03-02T03:30:21.000Z" itemprop="datePublished">2016-03-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis 笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/数据库/">数据库</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Redis-的安装"><a href="#Redis-的安装" class="headerlink" title="Redis 的安装"></a>Redis 的安装</h3><p><strong>说明：</strong>此次操作都在Centos 6.5 32位机上操作<br>去<a href="http://redis.io/" target="_blank" rel="external">Redis 官网</a>下载最新stable版本的tar.gz包安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://download.redis.io/releases/redis-<span class="number">3.0</span>.<span class="number">7</span>.tar.gz <span class="comment"># 可将地址改成最新的下载地址</span></span><br><span class="line">$ tar -xvf redis-<span class="number">3.0</span>.<span class="number">7</span>.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> redis-<span class="number">3.0</span>.<span class="number">7</span></span><br><span class="line">$ make <span class="comment"># 编译文件</span></span><br><span class="line">$ <span class="built_in">cd</span> src/</span><br><span class="line">$ ./redis-server <span class="comment"># 启动服务器</span></span><br><span class="line">$ ./redis-cli <span class="comment"># 启动本地客户端,下面为执行的命令和结果</span></span><br><span class="line">redis&gt; <span class="built_in">set</span> foo bar</span><br><span class="line">OK</span><br><span class="line">redis&gt; get foo</span><br><span class="line"><span class="string">"bar"</span></span><br><span class="line">redis&gt; ping <span class="comment"># 此处输入ping返回PONG说明安装成功</span></span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="GET、SET和INCR命令"><a href="#GET、SET和INCR命令" class="headerlink" title="GET、SET和INCR命令"></a><code>GET</code>、<code>SET</code>和<code>INCR</code>命令</h3><p>使用<code>GET</code>和<code>SET</code>进行设值和取值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> server:name fido</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get server:name</span><br><span class="line"><span class="string">"fido"</span></span><br></pre></td></tr></table></figure>
+<p>使用<code>SETNX</code>（SET-if-not-exists）在设置的key不存在时才回设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get foo</span><br><span class="line"><span class="string">"11"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; setnx foo <span class="number">12</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get foo</span><br><span class="line"><span class="string">"11"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> foo <span class="number">13</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get foo</span><br><span class="line"><span class="string">"13"</span></span><br></pre></td></tr></table></figure>
+<p>使用<code>DEL</code>删除一个键值对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get foo</span><br><span class="line"><span class="string">"13"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; del foo</span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get foo</span><br><span class="line">(nil)</span><br></pre></td></tr></table></figure>
+<p>使用<code>INCR</code>进行自增操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get connections</span><br><span class="line"><span class="string">"1"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; incr connections</span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">2</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get connections</span><br><span class="line"><span class="string">"2"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>使用<code>INCR</code>的原因如下</p>
+<blockquote>
+<p>There is something special about INCR. Why do we provide such an operation if we can do it ourself with a bit of code? After all it is as simple as:</p>
+<p>x = GET count</p>
+<p>x = x + 1</p>
+<p>SET count x</p>
+<p>The problem is that doing the increment in this way will only work as long as there is a single client using the key. See what happens if two clients are accessing this key at the same time:</p>
+<ol>
+<li>Client A reads count as 10.</li>
+<li>Client B reads count as 10.</li>
+<li>Client A increments 10 and sets count to 11.</li>
+<li>Client B increments 10 and sets count to 11.<br>We wanted the value to be 12, but instead it is 11! This is because incrementing the value in this way is not an atomic operation. Calling the INCR command in Redis will prevent this from happening, because it is an atomic operation. Redis provides many of these atomic operations on different types of data.</li>
+</ol>
+</blockquote>
+<h3 id="EXPIRE和TTL来设置和查询键的生存时间"><a href="#EXPIRE和TTL来设置和查询键的生存时间" class="headerlink" title="EXPIRE和TTL来设置和查询键的生存时间"></a><code>EXPIRE</code>和<code>TTL</code>来设置和查询键的生存时间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> resource:lock <span class="string">"Redis Demo"</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; get resource:lock</span><br><span class="line"><span class="string">"Redis Demo"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; expire resource:lock <span class="number">120</span> <span class="comment"># 通过expire 设置键的生存时间</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; TTL resource:lock <span class="comment"># 通过ttl查看键的剩余存活时间</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">114</span></span><br></pre></td></tr></table></figure>
+<h3 id="list数据结构的操作"><a href="#list数据结构的操作" class="headerlink" title="list数据结构的操作"></a><code>list</code>数据结构的操作</h3><p>list中存储的是有序的值，相关操作命令有<code>RPUSH</code>,<code>LPUSH</code>,<code>LLEN</code>,<code>LRANGE</code>,<code>LPOP</code>,’RPOP’</p>
+<ul>
+<li><code>RPUSH</code>向list的尾部添加数据</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; rpush friends <span class="string">"Alice"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; rpush friends <span class="string">"Bob"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>LPUSH</code>向list的头部添加数据</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; lpush friends <span class="string">"Sam"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>LRANGE</code>取list的子集</li>
+</ul>
+<p><strong>LRANGE</strong>带有两个参数，第一个是子集的开始索引位置，第二个是子集结束的索引位置，如果第二个参数的值是<code>-1</code>则取到list的结尾</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; lrange friends <span class="number">0</span> -<span class="number">1</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"Sam"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"Alice"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"Bob"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; lrange friends <span class="number">0</span> <span class="number">1</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"Sam"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"Alice"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; lrange friends <span class="number">0</span> <span class="number">2</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"Sam"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"Alice"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"Bob"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>LLEN</code>返回当前list的长度</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; llen friends</span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>LPOP</code>从list头部取出元素并返回值,<code>RPOP</code>从list尾部取出元素并返回值</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; llen friends</span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">3</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; lpop friends</span><br><span class="line"><span class="string">"Sam"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; llen friends</span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">2</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; rpop friends</span><br><span class="line"><span class="string">"Bob"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; llen friends</span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="set集合数据结构的操作"><a href="#set集合数据结构的操作" class="headerlink" title="set集合数据结构的操作"></a><code>set</code>集合数据结构的操作</h3><p><strong>set</strong>与list相似，但是它是无序的，并且每一个元素只出现一次。相关操作命令有<code>SADD</code>,<code>SREM</code>,<code>SISMEMBER</code>,<code>SMEMBERS</code>和<code>SUNION</code></p>
+<ul>
+<li><code>SADD</code>向set中添加元素,<code>SREM</code>删除set中的元素</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; sadd superpowers <span class="string">"flight"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; sadd superpowers <span class="string">"x-ray vision"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; sadd superpowers <span class="string">"reflexes"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; smembers superpowers</span><br><span class="line"><span class="number">1</span>) <span class="string">"x-ray vision"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"reflexes"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"flight"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; srem superpowers <span class="string">"reflexes"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; smembers superpowers</span><br><span class="line"><span class="number">1</span>) <span class="string">"x-ray vision"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"flight"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>SISMEMBER</code>测试某元素是否是set中的成员，<code>SMEMBERS</code>返回set中的所有成员，<code>SUNION</code>合并两个或以上的set然后返回合并后的所有元素(相同元素只保留一个)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; sismember superpowers <span class="string">"flight"</span> <span class="comment"># 是set的成员返回1，否则返回0</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; sismember superpowers <span class="string">"reflexes"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; smembers superpowers <span class="comment"># 用smembers命令查看set中的所有成员</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"x-ray vision"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"flight"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; sadd birdpowers <span class="string">"pecking"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; sadd birdpowers <span class="string">"flight"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; sunion superpowers birdpowers <span class="comment"># 合并后的内容也是set</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"pecking"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"x-ray vision"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"flight"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Sorted-Sets相关操作"><a href="#Sorted-Sets相关操作" class="headerlink" title="Sorted Sets相关操作"></a><code>Sorted Sets</code>相关操作</h3><p><strong>Sorted Sets</strong>有序集合在Radis 1.2起被支持，并且每个值都有一个相关的<code>score</code></p>
+<ul>
+<li><code>ZADD</code>命令向有序集合中添加元素 其中第三个参数是成员排序依据的score</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zadd hackers <span class="number">1940</span> <span class="string">"Alan Kay"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zadd hackers <span class="number">1906</span> <span class="string">"Grace Hopper"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zadd hackers <span class="number">1953</span> <span class="string">"Richard Stallman"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zadd hackers <span class="number">1965</span> <span class="string">"Yukihiro Matsumoto"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zadd hackers <span class="number">1916</span> <span class="string">"Claude Shannon"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zadd hackers <span class="number">1969</span> <span class="string">"Linus Torvalds"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zadd hackers <span class="number">1957</span> <span class="string">"Sophie Wilson"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zadd hackers <span class="number">1912</span> <span class="string">"Alan Turing"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>ZRANGE</code>命令获取有序集合排序后的子集后跟两个参数与list类似</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; zrange hackers <span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"Claude Shannon"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"Alan Kay"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"Richard Stallman"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Hashes数据类型"><a href="#Hashes数据类型" class="headerlink" title="Hashes数据类型"></a><code>Hashes</code>数据类型</h3><p>Redis中的hash是一个键值对集合，是一个String类型的field和value的映射表，hash特别适合于存储对象。</p>
+<ul>
+<li><code>HSET</code>和<code>HMSET</code>新增数据，使用<code>HGET</code>和<code>HGETALL</code>获取已保存数据</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; HSET user:<span class="number">1000</span> name <span class="string">"John Smith"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; HSET user:<span class="number">1000</span> email <span class="string">"john.smith@example.com"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; HSET user:<span class="number">1000</span> password <span class="string">"s3cret"</span></span><br><span class="line">(<span class="built_in">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; hgetall user:<span class="number">1000</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"name"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"John Smith"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"email"</span></span><br><span class="line"><span class="number">4</span>) <span class="string">"john.smith@example.com"</span></span><br><span class="line"><span class="number">5</span>) <span class="string">"password"</span></span><br><span class="line"><span class="number">6</span>) <span class="string">"s3cret"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; hmset user:<span class="number">1000</span> name <span class="string">"Mary Jones"</span> password <span class="string">"hidden"</span> email <span class="string">"mjones@example.com"</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; hgetall user:<span class="number">1000</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"name"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"Mary Jones"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"email"</span></span><br><span class="line"><span class="number">4</span>) <span class="string">"mjones@example.com"</span></span><br><span class="line"><span class="number">5</span>) <span class="string">"password"</span></span><br><span class="line"><span class="number">6</span>) <span class="string">"hidden"</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; hget user:<span class="number">1000</span> name</span><br><span class="line"><span class="string">"Mary Jones"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>Hashset</code>中Numeric值存储时与简单String类型相同,并且也存在自增方法</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">27.0.0.1:6379&#62; hset user:1000 visits 10 # &#26032;&#22686;&#19968;&#20010;Numeric&#20803;&#32032;&#10;(integer) 1&#10;127.0.0.1:6379&#62; hincrby user:1000 visits 1 # &#22686;&#21152;1&#10;(integer) 11&#10;127.0.0.1:6379&#62; hincrby user:1000 visits 10 # &#22686;&#21152;10&#10;(integer) 21&#10;127.0.0.1:6379&#62; hdel user:1000 visits # &#21024;&#38500;&#26032;&#22686;&#20803;&#32032;&#10;(integer) 1&#10;127.0.0.1:6379&#62; hincrby user:1000 visits 1&#10;(integer) 1&#10;127.0.0.1:6379&#62; hget hincrby user:1000 visits&#10;(error) ERR wrong number of arguments for &#39;hget&#39; command&#10;127.0.0.1:6379&#62; hget user:1000 visits&#10;&#34;1&#34;</span><br></pre></td></tr></table></figure>
+<h3 id="使用redis-cli链接到本地或远程服务"><a href="#使用redis-cli链接到本地或远程服务" class="headerlink" title="使用redis-cli链接到本地或远程服务"></a>使用<code>redis-cli</code>链接到本地或远程服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ./redis-cli <span class="comment"># 启动本地redis客户端,使用ping命令，返回`PONG`后说明redis启动成功</span></span><br><span class="line"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">6379</span>&gt; ping</span><br><span class="line">PONG</span><br><span class="line">$</span><br><span class="line">$ redis-cli -h host -p port <span class="operator">-a</span> password <span class="comment"># 此命令链接到远程服务器上的Redis，以下为实例</span></span><br><span class="line">$ ./redis-cli -h <span class="number">127.0</span>.<span class="number">0.1</span> -port <span class="number">6379</span> <span class="operator">-a</span> <span class="string">"mypass"</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/02/Linux运行，关闭和查看后台任务/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Linux运行，关闭和查看后台任务
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/29/单词笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">单词笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'howeroc'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Howe Chang
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-74076082-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
